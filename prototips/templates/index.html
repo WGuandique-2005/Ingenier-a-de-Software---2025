@@ -1,11 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>LESSA - Lenguaje de Señas Salvadoreño</title>
+    <link rel="stylesheet" href="/prototips/static/style.css">
+    <style>
+        /* GENERAL */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            display: grid;
+            grid-template-columns: 70% 30%;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* COLUMNA PRINCIPAL */
+        .col-main {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* COLUMNA SECUNDARIA */
+        .col-side {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .col-side img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #4b93ff;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    
+
+    <header>
+        {% include 'navbar.html' %}
+    </header>
+
+    <main class="container">
+        <section class="col-main">
+            <h1>LESSA</h1>
+            <h3>Lenguaje de Señas Salvadoreño</h3>
+            <hr>
+            <h4>Introducción</h4>
+            <p>La lengua de señas salvadoreña (LESSA) presenta características básicas de toda lengua como hecho
+                social, en su función comunicativa y al ser un conjunto de signos lingüísticos no orales con sus
+                propias reglas de organización y combinación.</p>
+            <p>La LESSA debe ser comprendida como un sistema lingüístico no verbal, que como cualquier lengua
+                presenta una estructura en los distintos planos de estudio de la lingüística moderna: en su
+                fonología, morfología, sintaxis, semántica, léxico y discurso.</p>
+
+            <h4>Recursos para aprender LESSA</h4>
+            <p>Existen diversos recursos disponibles para quienes desean aprender el Lenguaje de Señas Salvadoreño
+                (LESSA), permitiendo que tanto personas sordas como oyentes puedan comunicarse y comprenderse mejor.</p>
+            <ul>
+                <li><strong>Cursos en Línea:</strong> Incluyen videos, actividades interactivas y
+                    tutorías en vivo, algunos con certificación.</li>
+                <li><strong>Aplicaciones Móviles:</strong> Permiten aprender y practicar en cualquier
+                    momento y lugar con lecciones y glosarios de señas.</li>
+                <li><strong>Libros y Materiales Impresos:</strong> Guías visuales y descripciones detalladas de cada seña,
+                    útiles tanto para autodidactas como para cursos formales.</li>
+                <li><strong>Eventos y Talleres Presenciales:</strong> Organizados por asociaciones de la
+                    comunidad sorda en El Salvador para practicar en un entorno real.</li>
+            </ul>
+        </section>
+
+        <aside class="col-side">
+            <h4>Importancia de LESSA</h4>
+            <img src="{{ url_for('static', filename='img/lessa.jpg') }}" alt="LESSA">
+            <p>El Lenguaje de Señas Salvadoreño (LESSA) es fundamental para la comunidad sorda en El Salvador, ya que no
+                solo permite una comunicación efectiva, sino que también abre las puertas a la inclusión y a la
+                participación social.</p>
+            <p>Además, LESSA juega un papel crucial en el ámbito educativo, permitiendo que los estudiantes sordos
+                accedan a una educación adecuada y comprensible, mejorando así su rendimiento académico y su bienestar
+                emocional.</p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>Lenguaje de Señas Salvadoreño (LESSA)</p>
+        <p>Ingeniería de Software</p>
+    </footer>
 </body>
 </html>
