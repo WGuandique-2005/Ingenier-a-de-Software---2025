@@ -86,24 +86,24 @@ def pag4():
 def redirect_level():
     nivel = request.form.get('nivel')
     if nivel == 'principiante':
-        return redirect(url_for('pag5'))
+        return redirect(url_for('nivelPri'))
     elif nivel == 'intermedio':
-        return redirect(url_for('pag6'))
+        return redirect(url_for('nivelMed'))
     elif nivel == 'avanzado':
-        return redirect(url_for('pag7'))
+        return redirect(url_for('nivelAvan'))
     else:
         return redirect(url_for('index'))
 
 @app.route('/nivelPri')
-def pag5():
+def nivelPri():
     return render_template('nivelPri.html', camera_active=camera_active)
 
 @app.route('/nivelMed')
-def pag6():
+def nivelMed():
     return render_template('nivelMed.html')
 
 @app.route('/nivelAvan')
-def pag7():
+def nivelAvan():
     return render_template('nivelAvan.html')
 
 @app.route('/get_result')
