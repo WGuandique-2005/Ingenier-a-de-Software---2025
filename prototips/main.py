@@ -10,5 +10,9 @@ app.config['DEBUG'] = True
 def index():
     return render_template('index.html')
 
+@app.route('/aprender')
+def aprender():
+    return render_template('aprender.html')
+
 if __name__ == '__main__':
     app.run(debug=False)
