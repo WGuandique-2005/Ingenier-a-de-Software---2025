@@ -14,5 +14,9 @@ def index():
 def aprender():
     return render_template('aprender.html')
 
+@app.route('/jugar')
+def jugar():
+    return render_template('jugar.html')
+
 if __name__ == '__main__':
     app.run(debug=False)

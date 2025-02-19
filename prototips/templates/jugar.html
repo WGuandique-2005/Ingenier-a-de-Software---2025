@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugar</title>
+    <!-- Ajusta la ruta a tu archivo CSS si lo necesitas -->
+    <link rel="stylesheet" href="/prototips/static/style.css"> 
+    <style>
+        /* FUENTE Y FONDO */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Fondo con ligero degradado */
+            background: linear-gradient(to bottom right, #f8f9fa, #ffffff);
+            /* Quitar display: flex para permitir que la grid funcione mejor */
+        }
+
+        /* CONTENEDOR GENERAL DEL JUEGO */
+        .game-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto; /* Centra horizontalmente y deja espacio arriba */
+            /* Alineación vertical al inicio (top) */
+            align-items: start;
+        }
+
+        /* COLUMNA PRINCIPAL (Texto, explicación, etc.) */
+        .col-main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .col-main h1 {
+            margin-top: 0;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        /* COLUMNA SECUNDARIA (Información adicional, imagen, etc.) */
+        .col-side {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .col-side h2 {
+            margin-top: 0;
+            font-size: 1.6rem;
+            color: #333;
+        }
+
+        /* CONTENEDOR DE NIVELES (Camino vertical) */
+        .level-container {
+            position: relative;
+            margin-top: 2rem;
+        }
+
+        /* Línea vertical que une los círculos */
+        .level-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #ccc;
+            z-index: -1; /* Para que quede detrás de los círculos */
+        }
+
+        /* Cada paso (nivel) del camino */
+        .level-step {
+            position: relative;
+            margin: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Efecto hover sobre el bloque */
+            transition: transform 0.2s;
+        }
+        .level-step:hover {
+            transform: scale(1.02);
+        }
+
+        /* El círculo que representa cada nivel */
+        .circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            color: #fff; /* Texto blanco por defecto */
+        }
+
+        /* Efecto al pasar el ratón sobre el círculo */
+        .circle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Circulitos con diferentes colores */
+        .circle-easy {
+            background: #50C878; /* Verde */
+        }
+        .circle-medium {
+            background: #f7b267; /* Naranja */
+        }
+        .circle-hard {
+            background: #f48498; /* Rojizo */
+        }
+
+        /* Etiqueta debajo del círculo */
+        .level-label {
+            margin-top: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #4b93ff;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        footer p {
+            margin: 0.3rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .game-container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                margin: 1rem auto;
+            }
+            .circle {
+                width: 70px;
+                height: 70px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<header>
+    {% include 'navbar.html' %}
+</header>
+
+<body>
+    <div class="game-container">
+        <!-- COLUMNA PRINCIPAL -->
+        <div class="col-main">
+            <h1>Jugar</h1>
+            <p>¡Bienvenido a la sección de juegos! Aquí podrás poner a prueba tus conocimientos sobre el Lenguaje de
+                Señas Salvadoreño (LESSA).</p>
+            <p>Selecciona un juego para comenzar:</p>
+            <div class="level-container">
+                <!-- Nivel Fácil -->
+                <div class="level-step" onclick="alert('Elegiste nivel Fácil')">
+                    <div class="circle circle-easy">Fácil</div>
+                    <div class="level-label">Nivel 1</div>
+                </div>
+                <!-- Nivel Medio -->
+                <div class="level-step" onclick="alert('Elegiste nivel Medio')">
+                    <div class="circle circle-medium">Medio</div>
+                    <div class="level-label">Nivel 2</div>
+                </div>
+                <!-- Nivel Difícil -->
+                <div class="level-step" onclick="alert('Elegiste nivel Difícil')">
+                    <div class="circle circle-hard">Difícil</div>
+                    <div class="level-label">Nivel 3</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUMNA SECUNDARIA -->
+        <div class="col-side">
+            <h2>¡Aprende jugando!</h2>
+            <p>Los juegos son una excelente forma de aprender y practicar el Lenguaje de Señas Salvadoreño (LESSA).</p>
+            <img src="{{ url_for('static', filename='img/icono_letras.gif') }}" alt="Juegos educativos" height="200" width="200">
+        </div>
+    </div>
+</body>
+
+<footer>
+    <p>Lenguaje de Señas Salvadoreño (LESSA)</p>
+    <p>Ingeniería de Software</p>
+    <p>&copy; 2025 LESSA. Todos los derechos reservados.</p>
+</footer>
+</html>
